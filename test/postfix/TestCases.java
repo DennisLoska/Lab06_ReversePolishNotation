@@ -18,8 +18,6 @@ public class TestCases {
 				{ "operator precedence I", "1 * 2 + 3", "1 2 * 3 +", 5 },
 				{ "operator precedence II", "1 + 2 * 3", "1 2 3 * +", 7 },
 				{ "operator precedence III", "9 - 1 - 2 - 3 * 2 - 1", "9 1 - 2 - 3 2 * - 1 -", -1 },
-				{ "fractions I", "( 1 + 2 ) * 3 + ( 4 ^ ( 5 - 6 ) )",
-						"1 2 + 3 * 4 5 6 - ^ +", 9.25 },
 				{ "fractions II II", "1 + 2 + 3 / 4 + 5 + 6 * ( 7 + 8 )",
 						"1 2 + 3 4 / + 5 + 6 7 8 + * +", 98.75 }
 		};
@@ -34,6 +32,7 @@ public class TestCases {
 				{ "exponential IV", "1 + 2 * 3 - 4 ^ 5 + 6",
 						"1 2 3 * + 4 5 ^ - 6 +", -1011 } });
 	}
+
 	public static Collection<Object[]> multiDigitTestCases() {
 		return Arrays.asList(new Object[][] {
 				{ "multi digit I", "40 * 31", "40 31 *", 1240 },
