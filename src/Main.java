@@ -15,10 +15,11 @@ public class Main {
 		stack.push(2);
 		stack.push("String 3");
 		
-		stack.pop();
-		stack.pop();
+//		stack.pop();
+//		stack.pop();
 		
-		System.out.println(stack.top());
+//		System.out.println(stack.top());
+		System.out.println(stack.toString());
 
 	}
 }
