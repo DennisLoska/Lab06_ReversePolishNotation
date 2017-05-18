@@ -8,8 +8,8 @@ public interface Stack<E> {
 	public E top() throws Underflow;
 
 	//return this
-	public Stack<E> push(E element);
+	public void push(E element);
 
-	public Stack<E> pop() throws Underflow;
+	public Node<E> pop() throws Underflow;
 
 }
