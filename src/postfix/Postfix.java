@@ -6,8 +6,15 @@ import stack.Underflow;
 
 public class Postfix {
 
-	public String infixToPostfix(String infix) throws Underflow  {
-		// TODO Auto-generated method stub		
+	public String infixToPostfix(String infix) throws Underflow, WrongInputFormatException  {
+		//check if the input isnt wrong
+		char endChar = infix.charAt(infix.length());//it would be postfix
+		char startChar = infix.charAt(0); // it would be infix
+		if(infix.length()<3||endChar=='*'||endChar=='-'||endChar=='/'||endChar=='+'||startChar=='*'||startChar=='-'||startChar=='/'||startChar=='+'){
+			throw new WrongInputFormatException();
+		}
+		
+		
 		Stack<Character> stack = new LinkedListStack<Character>();
 		String outputString = "";
 		
@@ -83,5 +90,7 @@ public class Postfix {
 		int finalResult = ((int)(stack.pop().getData())-48);
 		return finalResult;
 	}
+	
+	
 
 }
