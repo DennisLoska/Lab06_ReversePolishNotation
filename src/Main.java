@@ -17,13 +17,13 @@ public class Main {
 		stack.push(2);
 		stack.push("String 3");
 		
-		System.out.println(postfix.evaluate("12+"));
+		System.out.println(postfix.infixToPostfix("1+2"));
 		
 //		stack.pop();
 //		stack.pop();
 		
 //		System.out.println(stack.top());
-		System.out.println(stack.toString());
+		//System.out.println(stack.toString());
 
 	}
 }

@@ -40,7 +40,10 @@ public class Postfix {
 				stack.pop();//popping out the left brace
 			}
 		}
-				 
+		//if there is any input in the Stack - pop & append to output String
+		while (!stack.isEmpty()){
+			outputString += stack.pop().getData();
+		}
 		return outputString;
 	}
 
