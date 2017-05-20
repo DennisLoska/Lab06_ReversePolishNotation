@@ -6,13 +6,45 @@ import stack.Underflow;
 
 public class Postfix {
 
-	public String infixToPostfix(String infix) {
-		// TODO Auto-generated method stub
-		return null;
+	public String infixToPostfix(String infix) throws Underflow  {
+		// TODO Auto-generated method stub		
+		Stack<Character> stack = new LinkedListStack<Character>();
+		String outputString = "";
+		
+		for(int i=0; i<infix.length(); i++){
+			//nextToken
+			char t = infix.charAt(i);
+			
+			//if between 0 and 9 append to outputString
+			if(t>=48&&t<=57){
+				outputString += t;
+			}else if(t=='('){
+				stack.push(t);
+			}else if (t=='*'||t=='+'||t=='-'||t=='/'){
+				if(stack.isEmpty()){
+					stack.push(t);
+				}else{
+					//if top has higher precedence
+					while(true){
+					if(t=='-'||t=='+'&&stack.top()=='/'||stack.top()=='*'){
+						//pop & append top output
+						outputString += stack.pop().getData();
+					}else break;
+					stack.push(t);	
+				}
+			}
+			}else if(t==')'){
+				while(!stack.isEmpty()&&stack.top()!='('){
+					outputString += stack.pop().getData();
+				}
+				stack.pop();//popping out the left brace
+			}
+		}
+				 
+		return outputString;
 	}
 
-	public double evaluate(String inputString) throws Underflow {
-		// TODO Auto-generated method stub
+	public int evaluate(String inputString) throws Underflow {
 		Stack<Character> stack = new LinkedListStack<Character>();
 		
 		
@@ -45,7 +77,7 @@ public class Postfix {
 				
 			}	
 		}
-		double finalResult = (double)(stack.pop().getData());
+		int finalResult = ((int)(stack.pop().getData())-48);
 		return finalResult;
 	}
 
