@@ -23,7 +23,7 @@ public class LinkedListStack<E> implements Stack<E> {
 		sb.append(head.getData());
 		while (head.getNext() != null) {
 			head = head.getNext();
-			sb.append(head.getData());
+			sb.append(", "+ head.getData());
 		}
 		String result = sb.toString();
 		return result;
