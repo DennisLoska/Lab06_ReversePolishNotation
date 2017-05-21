@@ -6,6 +6,10 @@ public class LinkedListStack<E> implements Stack<E> {
 	// private Node<E> tail = null;
 	private int size = 0;
 
+	public int getSize() {
+		return size;
+	}
+
 	@Override
 	public String toString() {
 		// StringBuilder sb = new StringBuilder();
@@ -59,8 +63,8 @@ public class LinkedListStack<E> implements Stack<E> {
 	@Override
 	public Node<E> pop() throws Underflow {
 		// TODO Auto-generated method stub
-		head = head.getNext();
-		// head.setNext(null);
+		if (size != 1)
+		 head = head.getNext();
 		size--;
 		return head;
 	}

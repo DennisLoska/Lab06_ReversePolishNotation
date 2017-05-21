@@ -40,7 +40,7 @@ public class Infix2PostfixTest {
 	}
 
 	@Test
-	public void testInfixToPostfix() throws Underflow {
+	public void testInfixToPostfix() throws Underflow, WrongInputFormatException {
 		assertEquals(comment + " (infix was: " + infix + ")", postfix,
 				converter.infixToPostfix(infix));
 	}
