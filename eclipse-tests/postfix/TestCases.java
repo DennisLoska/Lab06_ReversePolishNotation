@@ -7,19 +7,19 @@ import java.util.Collection;
 public class TestCases {
 	public static Collection<Object[]> generalTestCases() {
 		Object[][] data = new Object[][] {
-				{ "simple plus", "4 + 3", "4 3 +", 7 },
-				{ "simple minus", "4 - 3", "4 3 -", 1 },
-				{ "simple multiplication", "4 * 3", "4 3 *", 12 },
-				{ "simple division", "7 / 2", "7 2 /", 3.5 },
-				{ "3 plus", "9 + 9 + 9 + 9", "9 9 + 9 + 9 +", 36 },
-				{ "2 minus", "3 - 3 - 3", "3 3 - 3 -", -3 },
-				{ "2 minus with parantheses", "3 - ( 3 - 3 )", "3 3 3 - -", 3 },
-				{ "paranthesis at beginning", "( 3 + 2 )", "3 2 +", 5 },
-				{ "operator precedence I", "1 * 2 + 3", "1 2 * 3 +", 5 },
-				{ "operator precedence II", "1 + 2 * 3", "1 2 3 * +", 7 },
-				{ "operator precedence III", "9 - 1 - 2 - 3 * 2 - 1", "9 1 - 2 - 3 2 * - 1 -", -1 },
+				{ "simple plus", "4 + 3", "43+", 7 },
+				{ "simple minus", "4 - 3", "43-", 1 },
+				{ "simple multiplication", "4 * 3", "43*", 12 },
+				{ "simple division", "7 / 2", "72/", 3.5 },
+				{ "3 plus", "9 + 9 + 9 + 9", "99+9+9+", 36 },
+				{ "2 minus", "3 - 3 - 3", "33-3-", -3 },
+				{ "2 minus with parantheses", "3 - ( 3 - 3 )", "333--", 3 },
+				{ "paranthesis at beginning", "( 3 + 2 )", "32+", 5 },
+				{ "operator precedence I", "1 * 2 + 3", "12*3+", 5 },
+				{ "operator precedence II", "1 + 2 * 3", "123*+", 7 },
+				{ "operator precedence III", "9 - 1 - 2 - 3 * 2 - 1", "91-2-32*-1-", -1 },
 				{ "fractions II II", "1 + 2 + 3 / 4 + 5 + 6 * ( 7 + 8 )",
-						"1 2 + 3 4 / + 5 + 6 7 8 + * +", 98.75 }
+						"12+34/+5+678+*+", 98.75 }
 		};
 		return asCollection(data);
 	}
