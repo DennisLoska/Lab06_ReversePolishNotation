@@ -15,7 +15,7 @@ public class Postfix {
         }
 
         LinkedListStack<Character> stack = new LinkedListStack<Character>();
-        String outputString = "";
+        String outputString ="";
 
         for (int i = 0; i < infix.length(); i++) {
             //nextToken
@@ -23,7 +23,7 @@ public class Postfix {
 
             //if between 0 and 9 append to outputString
             if (t >= 48 && t <= 57) {
-                outputString += t;
+                outputString += t +" " ;
             } else if (t == '(') {
                 stack.push(t);
             } else if (t == '*' || t == '+' || t == '-' || t == '/') {
@@ -34,21 +34,21 @@ public class Postfix {
                     while (true) {
                         if (t == '-' || t == '+' && stack.top() == '/' || stack.top() == '*') {
                             //pop & append top output
-                            outputString += stack.pop().getData() + " ";
+                            outputString += stack.pop().getData();
                         } else break;
                         stack.push(t);
                     }
                 }
             } else if (t == ')') {
                 while (!stack.isEmpty() && stack.top() != '(') {
-                    outputString += stack.pop().getData() + " ";
+                    outputString += stack.pop().getData();
                 }
                 stack.pop();//popping out the left brace
             }
         }
         //if there is any input in the Stack - pop & append to output String
         while (stack.getSize() > 0) {
-            outputString += stack.pop().getData() + " ";
+            outputString += stack.pop().getData();
         }
         return outputString;
     }
