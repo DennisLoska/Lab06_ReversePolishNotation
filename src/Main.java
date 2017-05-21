@@ -20,12 +20,5 @@ public class Main {
 
         System.out.println(postfix.infixToPostfix("1+2"));
 
-
-//		stack.pop();
-//		stack.pop();
-
-//		System.out.println(stack.top());
-        //System.out.println(stack.toString());
-
     }
 }
