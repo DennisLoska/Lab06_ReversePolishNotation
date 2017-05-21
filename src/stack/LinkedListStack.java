@@ -62,7 +62,7 @@ public class LinkedListStack<E> implements Stack<E> {
 
 	@Override
 	public Node<E> pop() throws Underflow {
-		// TODO Auto-generated method stub
+		// TODO Tony: pop()-Methode debuggen - gibt manchmal NullPointerEx
 		if (size != 1)
 		 head = head.getNext();
 		size--;

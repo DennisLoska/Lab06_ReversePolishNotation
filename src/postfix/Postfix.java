@@ -53,8 +53,9 @@ public class Postfix {
         return outputString;
     }
 
+    //TODO Bernard: evaluate-methode debuggen ( returned immer nur 1 anstatt zu rechnen)
     public int evaluate(String inputString) throws Underflow {
-        Stack<Character> stack = new LinkedListStack<Character>();
+        LinkedListStack<Character> stack = new LinkedListStack<Character>();
 
         for (int i = 0; i < inputString.length(); i++) {
             //nextToken
