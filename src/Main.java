@@ -1,4 +1,5 @@
 import postfix.Postfix;
+import postfix.WrongInputFormatException;
 import stack.LinkedListStack;
 import stack.Underflow;
 
@@ -17,7 +18,11 @@ public class Main {
 		stack.push(2);
 		stack.push("String 3");
 		
-		System.out.println(postfix.infixToPostfix("1+2"));
+		try {
+			System.out.println(postfix.infixToPostfix("1+2"));
+		} catch (WrongInputFormatException e) {
+			e.printStackTrace();
+		}
 		
 //		stack.pop();
 //		stack.pop();

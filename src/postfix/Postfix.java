@@ -8,7 +8,7 @@ public class Postfix {
 
 	public String infixToPostfix(String infix) throws Underflow, WrongInputFormatException  {
 		//check if the input isnt wrong
-		char endChar = infix.charAt(infix.length());//it would be postfix
+		char endChar = infix.charAt(infix.length()-1);//it would be postfix
 		char startChar = infix.charAt(0); // it would be infix
 		if(infix.length()<3||endChar=='*'||endChar=='-'||endChar=='/'||endChar=='+'||startChar=='*'||startChar=='-'||startChar=='/'||startChar=='+'){
 			throw new WrongInputFormatException();
@@ -59,7 +59,6 @@ public class Postfix {
 		
 		
 		for(int i=0; i<inputString.length(); i++){
-			
 			//nextToken
 			//String t = String.valueOf(inputString.charAt(i));
 			char t = inputString.charAt(i);
@@ -82,9 +81,6 @@ public class Postfix {
 				stack.push((char)(result+48));
 				
 				}catch(Exception e){}
-				//int lhs = Integer.valueOf(String.valueOf(stack.pop()));
-				
-				
 			}	
 		}
 		int finalResult = ((int)(stack.pop().getData())-48);
