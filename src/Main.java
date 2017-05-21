@@ -19,6 +19,7 @@ public class Main {
         stack.push("String 3");
 
         System.out.println(postfix.infixToPostfix("1+2"));
+        System.out.println(postfix.evaluate(postfix.infixToPostfix("(2*(6-5)+1*9+1)/6")));
 
     }
 }

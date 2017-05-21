@@ -1,7 +1,8 @@
 package postfix;
 
+
 import stack.LinkedListStack;
-import stack.Stack;
+import java.util.*;
 import stack.Underflow;
 
 public class Postfix {
@@ -14,16 +15,16 @@ public class Postfix {
             throw new WrongInputFormatException();
         }
 
-        LinkedListStack<Character> stack = new LinkedListStack<Character>();
+        Stack<Character> stack = new Stack<Character>();
         String outputString ="";
 
         for (int i = 0; i < infix.length(); i++) {
             //nextToken
             char t = infix.charAt(i);
-
+ 
             //if between 0 and 9 append to outputString
             if (t >= 48 && t <= 57) {
-                outputString += t +" " ;
+                outputString += t;
             } else if (t == '(') {
                 stack.push(t);
             } else if (t == '*' || t == '+' || t == '-' || t == '/') {
@@ -31,31 +32,32 @@ public class Postfix {
                     stack.push(t);
                 } else {
                     //if top has higher precedence
-                    while (true) {
-                        if (t == '-' || t == '+' && stack.top() == '/' || stack.top() == '*') {
+                    while (stack.size()>0) {
+                        if ((t == '-' || t == '+') && (stack.peek() == '/' || stack.peek() == '*')) {
                             //pop & append top output
-                            outputString += stack.pop().getData();
-                        } else break;
-                        stack.push(t);
+                            outputString += stack.pop();
+                        }else{
+                        	break;
+                        }  
                     }
+                    stack.push(t);
                 }
             } else if (t == ')') {
-                while (!stack.isEmpty() && stack.top() != '(') {
-                    outputString += stack.pop().getData();
+                while (!stack.isEmpty() && stack.peek() != '(') {
+                    outputString += stack.pop();
                 }
                 stack.pop();//popping out the left brace
             }
         }
         //if there is any input in the Stack - pop & append to output String
-        while (stack.getSize() > 0) {
-            outputString += stack.pop().getData();
+        while (stack.size() > 0) {
+            outputString += stack.pop();
         }
         return outputString;
     }
 
-    //TODO Bernard: evaluate-methode debuggen ( returned immer nur 1 anstatt zu rechnen)
     public int evaluate(String inputString) throws Underflow {
-        LinkedListStack<Character> stack = new LinkedListStack<Character>();
+        Stack<Character> stack = new Stack<Character>();
 
         for (int i = 0; i < inputString.length(); i++) {
             //nextToken
@@ -63,31 +65,35 @@ public class Postfix {
             char t = inputString.charAt(i);
 
             if (t >= 48 && t <= 57) {
-                stack.push(t);//hier gleich in int umwandeln
+                stack.push(t);
                 //42*  43+  45-  47 /
-            } else if (t == 43 || t == 42 || t == 45 || t == 47) {
+            } else if (t == '*' || t == '-' || t == '/' || t == '+') {
                 try {
-                    int rhs = (int) (stack.pop().getData() - 48);
-                    int lhs = (int) (stack.pop().getData() - 48);
+                    int rhs = (int) (stack.pop() - 48);
+                    int lhs = (int) (stack.pop()- 48);
 
                     int result = 0;
                     switch (t) {
                         case 42:
                             result = lhs * rhs;
+                            break;
                         case 43:
                             result = lhs + rhs;
+                            break;
                         case 45:
                             result = lhs - rhs;
+                            break;
                         case 47:
                             result = lhs / rhs;
+                            break;
                     }
                     stack.push((char) (result + 48));
 
-                } catch (Exception e) {
+                } catch (Exception e) { System.out.println("Error");
                 }
             }
         }
-        int finalResult = ((int) (stack.pop().getData()) - 48);
+        int finalResult = ((int) (stack.pop()) - 48);
         return finalResult;
     }
 }
