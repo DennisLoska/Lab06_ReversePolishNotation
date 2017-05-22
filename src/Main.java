@@ -36,6 +36,8 @@ public class Main {
             Scanner reader = new Scanner(System.in);
             inputString = reader.nextLine();
             System.out.println(postfix.evaluate(postfix.infixToPostfix(inputString)));
+            reader.close();
         }
+        
     }
 }

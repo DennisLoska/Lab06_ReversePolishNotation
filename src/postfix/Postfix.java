@@ -15,7 +15,9 @@ public class Postfix {
             throw new WrongInputFormatException();
         }
 
-        Stack<Character> stack = new Stack<Character>();
+//        Stack<Character> stack = new Stack<Character>();
+        LinkedListStack<Character> stack = new LinkedListStack<Character>();
+        StringBuilder sb = new StringBuilder();
         String outputString ="";
 
         for (int i = 0; i < infix.length(); i++) {
@@ -24,7 +26,8 @@ public class Postfix {
  
             //if between 0 and 9 append to outputString
             if (t >= 48 && t <= 57) {
-                outputString += t;
+            	sb.append(t);
+//                outputString += t;
             } else if (t == '(') {
                 stack.push(t);
             } else if (t == '*' || t == '+' || t == '-' || t == '/') {
@@ -32,10 +35,11 @@ public class Postfix {
                     stack.push(t);
                 } else {
                     //if top has higher precedence
-                    while (stack.size()>0) {
-                        if ((t == '-' || t == '+') && (stack.peek() == '/' || stack.peek() == '*')) {
+                    while (stack.getSize()>0) {
+                        if ((t == '-' || t == '+') && (stack.top() == '/' || stack.top() == '*')) {
                             //pop & append top output
-                            outputString += stack.pop();
+//                            outputString += stack.pop();
+                            sb.append(stack.pop().getData());
                         }else{
                         	break;
                         }  
@@ -43,16 +47,18 @@ public class Postfix {
                     stack.push(t);
                 }
             } else if (t == ')') {
-                while (!stack.isEmpty() && stack.peek() != '(') {
-                    outputString += stack.pop();
+                while (!stack.isEmpty() && stack.top() != '(') {
+//                    outputString += stack.pop();
+                    sb.append(stack.pop().getData());
                 }
                 stack.pop();//popping out the left brace
             }
         }
         //if there is any input in the Stack - pop & append to output String
-        while (stack.size() > 0) {
-            outputString += stack.pop();
+        while (stack.getSize() >= 1) {
+            sb.append(stack.pop().getData());
         }
+        outputString = sb.toString();
         return outputString;
     }
 

@@ -2,7 +2,7 @@ package stack;
 
 public class LinkedListStack<E> implements Stack<E> {
 
-	private Node<E> head;
+	private Node<E> head = null;
 	private int size = 0;
 
 	public int getSize() {
@@ -10,11 +10,11 @@ public class LinkedListStack<E> implements Stack<E> {
 	}
 
 	@Override
-	public String toString(){
+	public String toString() {
 		String result = "";
-		
+
 		try {
-			if (this.isEmpty()){
+			if (this.isEmpty()) {
 				throw new Underflow();
 			} else {
 				StringBuilder sb = new StringBuilder();
@@ -25,13 +25,12 @@ public class LinkedListStack<E> implements Stack<E> {
 				}
 				result = sb.toString();
 			}
-//			return result;	
-		} catch (Underflow e){
+			// return result;
+		} catch (Underflow e) {
 			System.out.println("The Stack is empty!");
-		} 
+		}
 		return result;
-		
-				
+
 	}
 
 	@Override
@@ -69,10 +68,11 @@ public class LinkedListStack<E> implements Stack<E> {
 	public Node<E> pop() throws Underflow {
 		if (this.isEmpty()) {
 			throw new Underflow();
-		} else {
-			head = head.getNext();
-			size--;
 		}
-		return head;
+		Node<E> nodeToPop = head;
+		head = head.getNext();
+		size--;
+
+		return nodeToPop;
 	}
 }

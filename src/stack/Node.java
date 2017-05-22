@@ -3,7 +3,6 @@ package stack;
 public class Node<E> {
 
     private Node<E> next;
-    //	private Node<E> last;
     private E data;
 
     public Node(E data) {
@@ -22,13 +21,4 @@ public class Node<E> {
     public E getData() {
         return data;
     }
-
-//	public Node<E> getLast() {
-//		return last;
-//	}
-//
-//	public void setLast(Node<E> last) {
-//		this.last = last;
-//	}	
-
 }
