@@ -11,26 +11,20 @@ public class LinkedListStack<E> implements Stack<E> {
 
 	@Override
 	public String toString() {
-		String result = "";
-
-		try {
-			if (this.isEmpty()) {
-				throw new Underflow();
-			} else {
-				StringBuilder sb = new StringBuilder();
-				sb.append(head.getData());
-				while (head.getNext() != null) {
-					head = head.getNext();
-					sb.append(", " + head.getData());
-				}
-				result = sb.toString();
+		String result;
+		StringBuilder sb = new StringBuilder();
+		
+		if (!this.isEmpty()){
+			sb.append(head.getData());
+			Node<E> nextNode = head.getNext();
+			while(nextNode != null){
+				sb.append(", " + nextNode.getData());
+				nextNode = nextNode.getNext();
 			}
-			// return result;
-		} catch (Underflow e) {
-			System.out.println("The Stack is empty!");
 		}
-		return result;
 
+		result = sb.toString();
+		return result;
 	}
 
 	@Override
