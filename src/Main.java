@@ -22,29 +22,21 @@ public class Main {
 
         System.out.println(postfix.infixToPostfix("1+2"));
         System.out.println(postfix.evaluate(postfix.infixToPostfix("(2*(6-5)+1*9+1)/6")));
-        
+
         calculator();
 
     }
 
-	private static void calculator() {
-		System.out.println("//******The Great Calculator*******\\");
-		System.out.println("please enter in infix Format:, write quit to quit");
-		
-		String inputString="";
-		while(!inputString.equals("quit")){
-		Scanner reader = new Scanner(System.in);
-		inputString = reader.nextLine();
-		try {
-			System.out.println(postfix.evaluate(postfix.infixToPostfix(inputString)));
-		} catch (Underflow e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WrongInputFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
-		
-	}
+    private static void calculator() throws Underflow, WrongInputFormatException {
+        System.out.println("//******The Great Calculator*******\\");
+        System.out.println("please enter in infix Format:, write quit to quit");
+
+        String inputString = "";
+        while (!inputString.equals("quit")) {
+            Scanner reader = new Scanner(System.in);
+            inputString = reader.nextLine();
+            System.out.println(postfix.evaluate(postfix.infixToPostfix(inputString)));
+
+        }
+    }
 }
